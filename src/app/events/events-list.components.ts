@@ -1,23 +1,34 @@
-import { Component} from '@angular/core'
+import { Component } from '@angular/core';
 
 @Component({
-
-    selector: 'events-list',
-    templateUrl: './events-list.component.html'
+  selector: 'events-list',
+  template: `
+    <div>
+      <h1>Upcomming Angulars Events</h1>
+      <hr />
+      <event-thumbnail
+        (eventClick)="handleEventClicked($event)"
+        [event]="event1"
+      ></event-thumbnail>
+    </div>
+  `,
 })
-
 export class EventsListComponent {
-    event = {
-        id: 1,
-        name: 'Angular Connect',
-        date: '07/25/2023',
-        time: '10:00 am',
-        price: '599.99',
-        imageUrl: '/assets/images/angularconnect-shield.png',
-        location: {
-            address: '1057 DT',
-            city: 'London',
-            country: 'England'
-        }
-    }
+  event1 = {
+    id: 1,
+    name: 'Angular Connect',
+    date: '07/25/2023',
+    time: '10:00 am',
+    price: '599.99',
+    imageUrl: '/assets/images/angularconnect-shield.png',
+    location: {
+      address: '1057 DT',
+      city: 'London',
+      country: 'England',
+    },
+  };
+
+  handleEventClicked(data: any) {
+    console.log('received:', data);
+  }
 }
