@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
     <div>
       <h1>Upcomming Angulars Events</h1>
       <hr />
-      <event-thumbnail
+      <event-thumbnail #thumbnail
         (eventClick)="handleEventClicked($event)"
         [event]="event1"
-      ></event-thumbnail>
+      >
+      <h3>{{thumbnail.someProperty}}</h3>
+      <button class="btn btn-primary" (click)="thumbnail.logFoo()">log me some foo</button>
+    </event-thumbnail>
     </div>
   `,
 })
@@ -31,4 +34,6 @@ export class EventsListComponent {
   handleEventClicked(data: any) {
     console.log('received:', data);
   }
+
+ 
 }
